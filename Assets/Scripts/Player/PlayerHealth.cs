@@ -2,13 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
 
-    public int maxHealth = 100;
-    public int currentHealth;
+    public float maxHealth = 100f;
+    public float currentHealth;
+    private float HealthDisplay;
+    int health;
     public GameObject player;
+    public Text healthText;
+    public static bool airTime;
+   // public 
     
     
 
@@ -18,6 +24,8 @@ public class PlayerHealth : MonoBehaviour
         
         currentHealth = maxHealth;
         
+        
+        
        
         
 
@@ -26,20 +34,22 @@ public class PlayerHealth : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        airTime = true;
         
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-        
+        HealthDisplay = currentHealth;
+        health = (int)(HealthDisplay);
+        healthText.text = health.ToString();
+       // Debug.Log(currentHealth);
     }
 
-    public void Takedamage(int dam)
+    public void Takedamage(float dam)
     {
-        currentHealth -= dam;
+        currentHealth -=  dam;
         //Debug.Log($"{currentHealth}");
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);  // Ensure health stays within bounds
 
@@ -49,7 +59,7 @@ public class PlayerHealth : MonoBehaviour
             currentHealth = 0;
             
 
-            Destroy(gameObject);
+           // Destroy(gameObject);
             
 
 
@@ -58,5 +68,14 @@ public class PlayerHealth : MonoBehaviour
         }
 
     }
-    
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        switch (collision.gameObject.tag)
+        {
+            case "Air": airTime = true; Debug.Log(airTime); break;
+            case "NoAir": airTime = false; Debug.Log(airTime); break;
+        }
+    }
+
 }
