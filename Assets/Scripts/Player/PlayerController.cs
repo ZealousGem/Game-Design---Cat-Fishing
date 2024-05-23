@@ -3,12 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using Unity.VisualScripting;
 
+
 public class PlayerController : MonoBehaviour
 {
     Rigidbody2D rb;
     public float movementSpeed = 6f;
     private bool isAttacking=false;
-    
+
+    public GameObject LightAttackhitbox;
+    public GameObject HeavyAttackhitbox;
+
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -46,13 +52,17 @@ public class PlayerController : MonoBehaviour
     private IEnumerator LightAttack()
     {
         isAttacking = true;
+        LightAttackhitbox.SetActive(true);
         yield return new WaitForSeconds(0.5f);
+        LightAttackhitbox.SetActive(false);
         isAttacking=false;
     }
     private IEnumerator HeavyAttack()
     {
         isAttacking=true;
+        HeavyAttackhitbox.SetActive(true);
         yield return new WaitForSeconds(1f);
+        HeavyAttackhitbox.SetActive(false);
         isAttacking = false;
     }
 }
