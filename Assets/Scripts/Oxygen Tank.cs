@@ -47,6 +47,8 @@ public class OxygenTank : MonoBehaviour
         {
             timer -= Time.deltaTime;
             foreground.fillAmount = timer / maxTime;
+             
+            
         }
 
         else

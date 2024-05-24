@@ -12,7 +12,8 @@ public class PlayerHealth : MonoBehaviour
     private float HealthDisplay;
     int health;
     public GameObject player;
-    public Text healthText;
+    //public Text healthText;
+    public Image healthImage;
     public static bool airTime;
    // public 
     
@@ -41,9 +42,9 @@ public class PlayerHealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        HealthDisplay = currentHealth;
-        health = (int)(HealthDisplay);
-        healthText.text = health.ToString();
+      //  HealthDisplay = currentHealth;
+      //  health = (int)(HealthDisplay);
+      //  healthText.text = health.ToString();
        // Debug.Log(currentHealth);
     }
 
@@ -52,13 +53,13 @@ public class PlayerHealth : MonoBehaviour
         currentHealth -=  dam;
         //Debug.Log($"{currentHealth}");
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);  // Ensure health stays within bounds
-
+        healthImage.fillAmount = currentHealth / maxHealth;
         if (currentHealth <=0) 
         {
             //if the players health is 0 they are destoyed and the game manager is notified
             currentHealth = 0;
-            
 
+            healthImage.fillAmount = 0;
            // Destroy(gameObject);
             
 
