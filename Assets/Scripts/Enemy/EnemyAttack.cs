@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class EnemyAttack : MonoBehaviour
 {
-    public int attackDamage = 10;
+    public float attackDamage = 10;
     public float attackCooldown = 1.5f;
     private float timeSinceLastAttack = 0f;
     public bool canAttack = false;
-    public PlayerHealth playerHealth;
+    public Health playerHealth;
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
@@ -28,10 +28,10 @@ public class EnemyAttack : MonoBehaviour
         GameObject[] playerObject = GameObject.FindGameObjectsWithTag("Player");
         foreach (var pl in playerObject)
         {
-            if (pl.GetComponent<PlayerHealth>())
+            if (pl.GetComponent<Health>())
             {
                 
-                playerHealth = pl.GetComponent<PlayerHealth>();
+                playerHealth = pl.GetComponent<Health>();
             }
         }
     }

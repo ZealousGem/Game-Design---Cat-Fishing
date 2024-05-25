@@ -13,6 +13,11 @@ public class PlayerControls : MonoBehaviour
     private int tracker;
     private float Sharks = 0f;
 
+    public GameObject lightAttackHitbox;
+    public GameObject heavyAttackHitbox;
+
+    private bool isAttacking = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +34,17 @@ public class PlayerControls : MonoBehaviour
 
 
         rb.velocity = new Vector3(horizontalInput * movementSpeed, verticalInput * movementSpeed, 0);
+
+        if (Input.GetButtonDown("Fire1")) // Default key for "Fire1" is left ctrl or mouse0
+        {
+            StartCoroutine(LightAttack());
+        }
+
+        // Handle heavy attack input
+        if (Input.GetButtonDown("Fire2")) // Default key for "Fire2" is left alt or mouse1
+        {
+            StartCoroutine(HeavyAttack());
+        }
 
     }
 
@@ -50,5 +66,24 @@ public class PlayerControls : MonoBehaviour
             Depth.text = tracker.ToString() + "m";
         }
 
+    }
+    private IEnumerator LightAttack()
+    {
+        isAttacking = true;
+        lightAttackHitbox.SetActive(true);
+        //animator.SetTrigger("LightAttack");
+        yield return new WaitForSeconds(0.5f); // Match duration to animation
+        lightAttackHitbox.SetActive(false);
+        isAttacking = false;
+    }
+
+    private IEnumerator HeavyAttack()
+    {
+        isAttacking = true;
+        heavyAttackHitbox.SetActive(true);
+        //animator.SetTrigger("HeavyAttack");
+        yield return new WaitForSeconds(1f); // Match duration to animation
+        heavyAttackHitbox.SetActive(false);
+        isAttacking = false;
     }
 }
