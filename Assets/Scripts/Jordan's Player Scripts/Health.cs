@@ -1,12 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class PlayerHealth : MonoBehaviour
+public class Health : MonoBehaviour
 {
-
+    // Start is called before the first frame update
     public float maxHealth = 100f;
     public float currentHealth;
     private float HealthDisplay;
@@ -15,20 +14,20 @@ public class PlayerHealth : MonoBehaviour
     //public Text healthText;
     public Image healthImage;
     public static bool airTime;
-   // public 
-    
-    
+    // public 
 
-   
+
+
+
     private void Awake()
     {
-        
+
         currentHealth = maxHealth;
-        
-        
-        
-       
-        
+
+
+
+
+
 
     }
 
@@ -36,32 +35,32 @@ public class PlayerHealth : MonoBehaviour
     void Start()
     {
         airTime = true;
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-      //  HealthDisplay = currentHealth;
-      //  health = (int)(HealthDisplay);
-      //  healthText.text = health.ToString();
-       // Debug.Log(currentHealth);
+        //  HealthDisplay = currentHealth;
+        //  health = (int)(HealthDisplay);
+        //  healthText.text = health.ToString();
+        // Debug.Log(currentHealth);
     }
 
     public void Takedamage(float dam)
     {
-        currentHealth -=  dam;
+        currentHealth -= dam;
         //Debug.Log($"{currentHealth}");
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);  // Ensure health stays within bounds
         healthImage.fillAmount = currentHealth / maxHealth;
-        if (currentHealth <=0) 
+        if (currentHealth <= 0)
         {
             //if the players health is 0 they are destoyed and the game manager is notified
             currentHealth = 0;
 
             healthImage.fillAmount = 0;
-           // Destroy(gameObject);
-            
+            // Destroy(gameObject);
+
 
 
 
@@ -78,5 +77,4 @@ public class PlayerHealth : MonoBehaviour
             case "NoAir": airTime = false; Debug.Log(airTime); break;
         }
     }
-
 }

@@ -9,7 +9,7 @@ public class OxygenTank : MonoBehaviour
 
   //  public GameObject Text;
     public Image foreground;
-    public PlayerHealth health;
+    public Health health;
     bool takehealth;
     float timer;
     float maxTime = 50f;
@@ -22,7 +22,7 @@ public class OxygenTank : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (PlayerHealth.airTime is true)
+        if (Health.airTime is true)
         {
             gainOxygen();
         }
