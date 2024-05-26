@@ -6,6 +6,7 @@ public class Enemyhealth : MonoBehaviour
 {
     public int maxHealth = 100;
     public int currentHealthE;
+    public static bool isDead= false;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,8 +32,8 @@ public class Enemyhealth : MonoBehaviour
             currentHealthE = 0;
 
 
-            Destroy(gameObject);
-
+            
+            isDead = true;
 
 
 

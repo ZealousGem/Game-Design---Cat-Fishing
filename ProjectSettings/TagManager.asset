@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - Water
   - LightAttack
+  - Health
   layers:
   - Default
   - TransparentFX

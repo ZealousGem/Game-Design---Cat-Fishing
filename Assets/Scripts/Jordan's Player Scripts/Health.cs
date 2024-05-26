@@ -70,6 +70,19 @@ public class Health : MonoBehaviour
 
     }
 
+    public void Heal(float heal)
+    {
+        currentHealth += heal;
+        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+        healthImage.fillAmount = currentHealth / maxHealth;
+
+        if (currentHealth >= 100)
+        {
+            currentHealth = 100;
+            healthImage.fillAmount = 100;
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         switch (collision.gameObject.tag)
