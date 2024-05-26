@@ -143,6 +143,7 @@ public class Water2D : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
+        //this is causing problmes
         Rigidbody2D rb = col.GetComponent<Rigidbody2D>();
         Splash(col, rb.velocity.y * collisionVelocityFactor);
     }

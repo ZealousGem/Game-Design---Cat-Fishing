@@ -16,6 +16,8 @@ public class PlayerControls : MonoBehaviour
     public GameObject lightAttackHitbox;
     public GameObject heavyAttackHitbox;
 
+    
+
     private bool isAttacking = false;
 
     // Start is called before the first frame update
@@ -34,18 +36,33 @@ public class PlayerControls : MonoBehaviour
 
 
         rb.velocity = new Vector3(horizontalInput * movementSpeed, verticalInput * movementSpeed, 0);
+        if (Input.GetAxis("Horizontal")<0f)
+        {
+            transform.localScale = new Vector3(-1f,1f, 1f);
+        }
+        else if (Input.GetAxis("Horizontal") > 0f)
+        {
+            transform.localScale = new Vector3(1f, 1f, 1f);
 
-        if (Input.GetButtonDown("Fire1")) // Default key for "Fire1" is left ctrl or mouse0
+
+        }
+
+        if (Input.GetKeyDown(KeyCode.F)) // Default key for "Fire1" is left ctrl or mouse0
         {
             StartCoroutine(LightAttack());
         }
 
         // Handle heavy attack input
-        if (Input.GetButtonDown("Fire2")) // Default key for "Fire2" is left alt or mouse1
+        if (Input.GetKeyDown(KeyCode.Q)) // Default key for "Fire2" is left alt or mouse1
         {
             StartCoroutine(HeavyAttack());
         }
 
+    }
+    private void FixedUpdate()
+    {
+
+        
     }
 
     void Display(float verticalInput)

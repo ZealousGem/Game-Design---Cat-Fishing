@@ -7,6 +7,8 @@ TagManager:
   - Air
   - NoAir
   - Enemy
+  - Water
+  - LightAttack
   layers:
   - Default
   - TransparentFX
