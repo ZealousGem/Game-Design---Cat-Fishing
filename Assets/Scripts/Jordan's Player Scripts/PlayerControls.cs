@@ -13,6 +13,8 @@ public class PlayerControls : MonoBehaviour
     private int tracker;
     private float Sharks = 0f;
 
+    public Animator catMovement;
+
     public GameObject lightAttackHitbox;
     public GameObject heavyAttackHitbox;
 
@@ -88,6 +90,7 @@ public class PlayerControls : MonoBehaviour
     {
         isAttacking = true;
         lightAttackHitbox.SetActive(true);
+        catMovement.SetTrigger("Light");
         //animator.SetTrigger("LightAttack");
         yield return new WaitForSeconds(0.5f); // Match duration to animation
         lightAttackHitbox.SetActive(false);
@@ -98,6 +101,7 @@ public class PlayerControls : MonoBehaviour
     {
         isAttacking = true;
         heavyAttackHitbox.SetActive(true);
+        catMovement.SetTrigger("Heavy");
         //animator.SetTrigger("HeavyAttack");
         yield return new WaitForSeconds(1f); // Match duration to animation
         heavyAttackHitbox.SetActive(false);
