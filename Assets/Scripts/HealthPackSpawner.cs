@@ -24,7 +24,7 @@ public class HealthPackSpawner : MonoBehaviour
         Debug.Log("healed");
         Destroy(enemy);
       
-        Enemyhealth.isDead = false;
+        //Enemyhealth.isDead = false;
     }
 
 }

@@ -8,6 +8,7 @@ public class HealthPack : MonoBehaviour
     // Start is called before the first frame update
     public GameObject fish;
     public GameObject enemy;
+    public Enemyhealth notAvlive;
     public Animator animator;
   
    
@@ -20,7 +21,7 @@ public class HealthPack : MonoBehaviour
     void Update()
     {
        
-        if (Enemyhealth.isDead)
+        if (notAvlive.isDead)
         {
             StartCoroutine(Death());
 
