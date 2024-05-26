@@ -22,6 +22,7 @@ public class EnemyPatrol : MonoBehaviour
     void Start()
     {
         currentTarget = patrolpoint1 ;
+        Flip();
         
     }
     private void Awake()
@@ -78,6 +79,7 @@ public class EnemyPatrol : MonoBehaviour
 
         if (Vector2.Distance(transform.position, currentTarget.position)< 0.1f)
         {
+            Flip();
             currentTarget = currentTarget==patrolpoint1 ? patrolpoint2 : patrolpoint1 ;
         }
 
@@ -85,6 +87,22 @@ public class EnemyPatrol : MonoBehaviour
     private void ChasePlayer()
     {
         transform.position=Vector2.MoveTowards(transform.position,player.position, chaseSpeed*Time.deltaTime);
+
+        if (player.position.x< transform.position.x)
+        {
+            if ( transform.localScale.x > 0 )
+            {
+                Flip();
+            }
+        }
+        else if (player.position.x> transform.position.x)
+        {
+
+            if (transform.localScale.x < 0 )
+            {
+                Flip();
+            }
+        }
 
     }
     private Transform FindClosestPatrolPoint()
@@ -95,5 +113,11 @@ public class EnemyPatrol : MonoBehaviour
 
 
         return distanceToPatrolPoint1 < distanceToPatrolPoint2 ? patrolpoint1 : patrolpoint2;
+    }
+    public void Flip()
+    {
+        Vector3 localScale=transform.localScale;
+        localScale.x *= -1;
+        transform.localScale = localScale;
     }
 }
