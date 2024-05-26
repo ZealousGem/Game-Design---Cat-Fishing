@@ -8,6 +8,7 @@ public class AttackHitbox : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        Debug.Log("in attackhitbox script, there has been a collision");
         if(gameObject.CompareTag("Enemy"))
         {
             Enemyhealth enemyhealth = gameObject.GetComponent<Enemyhealth>();
