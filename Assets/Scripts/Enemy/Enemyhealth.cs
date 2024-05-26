@@ -5,11 +5,11 @@ using UnityEngine;
 public class Enemyhealth : MonoBehaviour
 {
     public int maxHealth = 100;
-    public int currentHealth;
+    public int currentHealthE;
     // Start is called before the first frame update
     void Start()
     {
-        currentHealth = maxHealth;
+        currentHealthE = maxHealth;
 
     }
 
@@ -20,14 +20,15 @@ public class Enemyhealth : MonoBehaviour
     }
     public void Takedamage(int dam)
     {
-        currentHealth -= dam;
+        currentHealthE -= dam;
         //Debug.Log($"{currentHealth}");
-        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);  // Ensure health stays within bounds
+        Debug.Log("The enemy health is:" + currentHealthE + "enemy has taken " + dam + "damage");
+        currentHealthE = Mathf.Clamp(currentHealthE, 0, maxHealth);  // Ensure health stays within bounds
 
-        if (currentHealth <= 0)
+        if (currentHealthE <= 0)
         {
             //if the players health is 0 they are destoyed and the game manager is notified
-            currentHealth = 0;
+            currentHealthE = 0;
 
 
             Destroy(gameObject);

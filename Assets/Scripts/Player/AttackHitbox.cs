@@ -5,16 +5,22 @@ using UnityEngine;
 public class AttackHitbox : MonoBehaviour
 {
     public int damage = 10;
+    public Enemyhealth enemyHealth;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("in attackhitbox script, there has been a collision");
-        if(gameObject.CompareTag("Enemy"))
+        
+        if(other.gameObject.CompareTag("Enemy"))
         {
-            Enemyhealth enemyhealth = gameObject.GetComponent<Enemyhealth>();
+            Debug.Log("in attackhitbox script, there has been a collision on an enemy");
+            Enemyhealth enemyhealth = other.GetComponent<Enemyhealth>();
             if (enemyhealth != null )
             {
                 enemyhealth.Takedamage(damage);
+            }
+            if (enemyhealth = null ) 
+            {
+                Debug.Log("enemyhealth not found");
             }
 
         }
@@ -22,6 +28,10 @@ public class AttackHitbox : MonoBehaviour
 
         
 
+
+    }
+    public void AttackEnemy()
+    {
 
     }
     // Start is called before the first frame update
