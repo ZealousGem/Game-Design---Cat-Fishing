@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,7 +15,7 @@ public class PlayerControls : MonoBehaviour
     private float Sharks = 0f;
 
     public Animator catMovement;
-
+    bool moving = false;
     public GameObject lightAttackHitbox;
     public GameObject heavyAttackHitbox;
 
@@ -32,33 +33,56 @@ public class PlayerControls : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float horizontalInput = Input.GetAxis("Horizontal");
-        float verticalInput = Input.GetAxis("Vertical");
-        Display(verticalInput);
+        
+            float horizontalInput = Input.GetAxis("Horizontal");
+            float verticalInput = Input.GetAxis("Vertical");
+            
+            Display(verticalInput);
+            rb.velocity = new Vector3(horizontalInput * movementSpeed, verticalInput * movementSpeed, 0);
+       
+        
+            if (Input.GetAxis("Horizontal") < 0f)
+            {
+                transform.localScale = new Vector3(-1f, 1f, 1f);
+            catMovement.SetBool("Moving", true);
+
+             }
+            else if (Input.GetAxis("Horizontal") > 0f)
+            {
+                transform.localScale = new Vector3(1f, 1f, 1f);
+            catMovement.SetBool("Moving", true);
 
 
-        rb.velocity = new Vector3(horizontalInput * movementSpeed, verticalInput * movementSpeed, 0);
-        if (Input.GetAxis("Horizontal")<0f)
-        {
-            transform.localScale = new Vector3(-1f,1f, 1f);
-        }
-        else if (Input.GetAxis("Horizontal") > 0f)
-        {
-            transform.localScale = new Vector3(1f, 1f, 1f);
+             }
+
+           else { catMovement.SetBool("Moving", false); }
+            
+        
+
+        
+            
+        
 
 
-        }
+            if (Input.GetKeyDown(KeyCode.F)) // Default key for "Fire1" is left ctrl or mouse0
+            {
+                StartCoroutine(LightAttack());
 
-        if (Input.GetKeyDown(KeyCode.F)) // Default key for "Fire1" is left ctrl or mouse0
-        {
-            StartCoroutine(LightAttack());
-        }
+            }
 
-        // Handle heavy attack input
-        if (Input.GetKeyDown(KeyCode.Q)) // Default key for "Fire2" is left alt or mouse1
-        {
-            StartCoroutine(HeavyAttack());
-        }
+            // Handle heavy attack input
+            if (Input.GetKeyDown(KeyCode.Q)) // Default key for "Fire2" is left alt or mouse1
+            {
+                StartCoroutine(HeavyAttack());
+
+            }
+        
+            
+            
+        
+       
+        
+       
 
     }
     private void FixedUpdate()
