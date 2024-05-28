@@ -10,6 +10,7 @@ TagManager:
   - Water
   - LightAttack
   - Health
+  - Boss
   layers:
   - Default
   - TransparentFX

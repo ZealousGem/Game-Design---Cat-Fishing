@@ -6,33 +6,63 @@ public class DamageHandler : MonoBehaviour
 {
     public float attackDamage = 10;
     public float attackCooldown = 2.5f;
-    private float timeSinceLastAttack = 0f;
+    
     public bool canAttack = false;
     public Health playerHealth;
+
+
+    public float damageCooldown = 1f;
+
+    private float lastDamageTime;
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.CompareTag("Enemy"))
+        if(collision.gameObject.CompareTag("Enemy") )
         {
-            CanAttackPlayer();
+            AttackPlayer();
 
+        }
+        if (collision.gameObject.CompareTag("Boss"))
+        {
+            attackDamage = 30;
+            AttackPlayer();
+
+        }
+    }
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            TryApplyDamage();
+
+        }
+        if (collision.gameObject.CompareTag("Boss"))
+        {
+            attackDamage = 30;
+            TryApplyDamage();
+
+        }
+
+
+    }
+    private void TryApplyDamage()
+    {
+        if(Time.time>=lastDamageTime+damageCooldown)
+        {
+            AttackPlayer();
+            lastDamageTime = Time.time;
         }
     }
     // Start is called before the first frame update
     void Start()
     {
+        lastDamageTime = -damageCooldown;
         
     }
 
     // Update is called once per frame
     void Update()
     {
-        timeSinceLastAttack += Time.deltaTime;
-
-        if (canAttack == true)
-        {
-            AttackPlayer();
-            timeSinceLastAttack = 0f;
-        }
+       
 
     }
     private void Awake()
@@ -47,23 +77,7 @@ public class DamageHandler : MonoBehaviour
             }
         }
     }
-    public bool CanAttackPlayer()
-    {
-        if (timeSinceLastAttack > attackCooldown)
-        {
-            //Debug.Log("time since last attack is"+timeSinceLastAttack);
-            //Debug.Log("attack cooldown is"+attackCooldown);
-            canAttack = true;
-        }
-        else
-        {
-            canAttack = false;
-        }
-
-
-        return canAttack;
-
-    }
+    
     private void AttackPlayer()
     {
         playerHealth.Takedamage(attackDamage);

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Health : MonoBehaviour
 {
@@ -58,6 +59,7 @@ public class Health : MonoBehaviour
         {
             //if the players health is 0 they are destoyed and the game manager is notified
             currentHealth = 0;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 
             healthImage.fillAmount = 0;
             // Destroy(gameObject);
