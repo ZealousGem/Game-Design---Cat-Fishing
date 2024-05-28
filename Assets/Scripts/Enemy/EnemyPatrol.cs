@@ -18,6 +18,7 @@ public class EnemyPatrol : MonoBehaviour
     private Transform currentTarget;
     private bool isChasing = false;
     private bool playerDetected= false;
+    public static bool UI = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -48,17 +49,19 @@ public class EnemyPatrol : MonoBehaviour
         {
             playerDetected = true;
             isChasing = true;
+            
 
         }
         else if(distanceToPlayer > losePlayerrange)
         {
             playerDetected = false;
-
+          
 
         }
         if (isChasing && playerDetected)
         {
             ChasePlayer();
+            UI = true;
         }
         else
         {
@@ -66,7 +69,7 @@ public class EnemyPatrol : MonoBehaviour
             { 
                 isChasing=false;
                 currentTarget = FindClosestPatrolPoint();
-
+                UI = false;
 
             }
             Patrol();
