@@ -35,7 +35,7 @@ public class EnemyPatrol : MonoBehaviour
             {
 
                 player = pl.GetComponent<Transform>();
-                Debug.Log(player);
+                //Debug.Log(player);
             }
         }
     }

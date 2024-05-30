@@ -27,6 +27,12 @@ public class DamageHandler : MonoBehaviour
             AttackPlayer();
 
         }
+        if (collision.gameObject.CompareTag("Enemy2"))
+        {
+            attackDamage = 20;
+            AttackPlayer();
+
+        }
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
@@ -39,6 +45,13 @@ public class DamageHandler : MonoBehaviour
         {
             attackDamage = 30;
             TryApplyDamage();
+
+        }
+        if (collision.gameObject.CompareTag("Enemy2"))
+        {
+            attackDamage = 20;
+            TryApplyDamage();
+
 
         }
 

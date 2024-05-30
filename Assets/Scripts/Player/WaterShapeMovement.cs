@@ -92,7 +92,7 @@ public class WaterShapeMovement : MonoBehaviour
             waterSpline.InsertPointAt(index, wavePoint);
             waterSpline.SetHeight(index, 0.1f);
             waterSpline.SetCorner(index, false);
-            Debug.Log("work");
+            //Debug.Log("work");
            // CreateSprings(waterSpline);
         }
     }

@@ -11,6 +11,7 @@ TagManager:
   - LightAttack
   - Health
   - Boss
+  - Enemy2
   layers:
   - Default
   - TransparentFX
