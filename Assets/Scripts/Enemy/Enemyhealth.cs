@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class Enemyhealth : MonoBehaviour
 {
-    public int maxHealth = 40;
-    public int currentHealthE;
+    public float maxHealth = 40f;
+    public float currentHealthE;
     public bool isDead= false;
     public Image Health;
     // Start is called before the first frame update
@@ -21,13 +21,14 @@ public class Enemyhealth : MonoBehaviour
     {
         
     }
-    public void Takedamage(int dam)
+    public void Takedamage(float dam)
     {
         currentHealthE -= dam;
         //Debug.Log($"{currentHealth}");
         Debug.Log("The enemy health is:" + currentHealthE + "enemy has taken " + dam + "damage");
-        Health.fillAmount = currentHealthE / maxHealth;
-        currentHealthE = Mathf.Clamp(currentHealthE, 0, maxHealth);  // Ensure health stays within bounds
+       
+        currentHealthE = Mathf.Clamp(currentHealthE, 0, maxHealth);
+        Health.fillAmount = currentHealthE / maxHealth;// Ensure health stays within bounds
 
         if (currentHealthE <= 0)
         {
