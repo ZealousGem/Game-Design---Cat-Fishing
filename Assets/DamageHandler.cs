@@ -29,6 +29,7 @@ public class DamageHandler : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Enemy2"))
         {
+            
             attackDamage = 20;
             AttackPlayer();
 
@@ -93,6 +94,7 @@ public class DamageHandler : MonoBehaviour
     
     private void AttackPlayer()
     {
+        
         playerHealth.Takedamage(attackDamage);
         canAttack = false;
 

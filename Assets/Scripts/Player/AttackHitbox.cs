@@ -12,7 +12,7 @@ public class AttackHitbox : MonoBehaviour
         
         if(other.gameObject.CompareTag("Enemy"))
         {
-            Debug.Log("in attackhitbox script, there has been a collision on an enemy");
+            
             Enemyhealth enemyhealth = other.GetComponent<Enemyhealth>();
             if (enemyhealth != null )
             {
@@ -24,9 +24,19 @@ public class AttackHitbox : MonoBehaviour
             }
 
         }
-            
+        if (other.gameObject.CompareTag("Enemy2"))
+        {
+            Enemyhealth enemyhealth = other.GetComponent<Enemyhealth>();
+            if (enemyhealth != null)
+            {
+                enemyhealth.Takedamage(damage);
+            }
+        }
 
-        
+
+
+
+
 
 
     }
