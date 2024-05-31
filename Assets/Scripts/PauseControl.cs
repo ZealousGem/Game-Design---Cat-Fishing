@@ -6,12 +6,15 @@ public class PauseControl : MonoBehaviour
 {
     public static bool gameIsPaused;
     public static bool PauseMenu;
-    
+    [SerializeField] GameObject menuD;
 
-    
+
+
     void Start()
     {
-        
+        menuD.SetActive(false);
+
+
     }
     private void Awake()
     {
@@ -32,6 +35,7 @@ public class PauseControl : MonoBehaviour
             PauseGame();
 
         }
+       
 
 
     }
@@ -42,6 +46,7 @@ public class PauseControl : MonoBehaviour
             //the time scale is set to 0 which pauses the game and the pausemenu is true
             Time.timeScale = 0f;
             PauseMenu = true;
+            menuD.SetActive(true);
 
         
         }
@@ -50,6 +55,7 @@ public class PauseControl : MonoBehaviour
             //the time scale is set to 1 which unpauses the game
             Time.timeScale = 1;
             PauseMenu = false;
+            menuD.SetActive(false);
         }
     }
 }

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class AttackHitbox : MonoBehaviour
 {
+
+    //for the player attacking the enemies
     public int damage = 10;
     public Enemyhealth enemyHealth;
 
@@ -25,6 +27,14 @@ public class AttackHitbox : MonoBehaviour
 
         }
         if (other.gameObject.CompareTag("Enemy2"))
+        {
+            Enemyhealth enemyhealth = other.GetComponent<Enemyhealth>();
+            if (enemyhealth != null)
+            {
+                enemyhealth.Takedamage(damage);
+            }
+        }
+        if (other.gameObject.CompareTag("Boss"))
         {
             Enemyhealth enemyhealth = other.GetComponent<Enemyhealth>();
             if (enemyhealth != null)

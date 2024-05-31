@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class DamageHandler : MonoBehaviour
 {
+
+    // for the enemies attacking the player
     public float attackDamage = 10;
     public float attackCooldown = 2.5f;
     
