@@ -12,6 +12,7 @@ TagManager:
   - Health
   - Boss
   - Enemy2
+  - Level1PausePanel
   layers:
   - Default
   - TransparentFX

@@ -4,16 +4,18 @@ using UnityEngine;
 
 public class PauseControl : MonoBehaviour
 {
-    public static bool gameIsPaused;
-    public static bool PauseMenu;
-    [SerializeField] GameObject menuD;
+    
+
+    private CanvasGroup pausePanelCanvasGroup;
 
 
 
     void Start()
     {
-        menuD.SetActive(false);
+        
 
+        GameObject pausePanel = GameObject.FindGameObjectWithTag("Level1PausePanel");
+        pausePanelCanvasGroup = pausePanel.GetComponent<CanvasGroup>();
 
     }
     private void Awake()
@@ -26,36 +28,89 @@ public class PauseControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if the player presses escape the game pauses or unpauses
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-           ;
-            //if it is false it becomes true, if it is true it becomes false
-            gameIsPaused = !gameIsPaused;
-            PauseGame();
+
+
+            if (Time.timeScale == 0f)
+            {
+                Time.timeScale = 1f;
+                TogglePausePanel();
+                //tells the gamemanager to resume the game
+
+
+            }
+            else
+            {
+                Time.timeScale = 0f;
+                TogglePausePanel();
+                //tells the gamemanager to pause the game
+
+
+            }
 
         }
-       
+
+
 
 
     }
-    void PauseGame()
+   
+    public void TogglePausePanel()
     {
-        if (gameIsPaused)
-        {
-            //the time scale is set to 0 which pauses the game and the pausemenu is true
-            Time.timeScale = 0f;
-            PauseMenu = true;
-            menuD.SetActive(true);
+        //find it using the tag
+        GameObject pausePanel = GameObject.FindGameObjectWithTag("Level1PausePanel");
 
-        
+        //gets the componenet
+        pausePanelCanvasGroup = pausePanel.GetComponent<CanvasGroup>();
+        if (pausePanelCanvasGroup == null)
+        {
+            Debug.LogWarning("Pause panel CanvasGroup is null, cannot toggle visibility.");
+            return;
+        }
+        //switches between true and false
+
+        if (pausePanelCanvasGroup.alpha == 0f)
+        {
+            ShowPauseMenu();
         }
         else
         {
-            //the time scale is set to 1 which unpauses the game
-            Time.timeScale = 1;
-            PauseMenu = false;
-            menuD.SetActive(false);
+            HidePauseMenu();
+        }
+    }
+
+    public void ShowPauseMenu()
+    {
+        if (pausePanelCanvasGroup != null)
+        {
+            //sets the colout to white
+            pausePanelCanvasGroup.alpha = 1f;
+            //you can interact with it
+            pausePanelCanvasGroup.interactable = true;
+            pausePanelCanvasGroup.blocksRaycasts = true;
+            Debug.Log("Pause menu shown.");
+        }
+        else
+        {
+            Debug.LogWarning("Pause panel CanvasGroup is null, cannot show pause menu.");
+        }
+    }
+
+    public void HidePauseMenu()
+    {
+        if (pausePanelCanvasGroup != null)
+        {
+            //sets the colout to transparent
+            pausePanelCanvasGroup.alpha = 0f;
+            //you can not interact with it 
+            pausePanelCanvasGroup.interactable = false;
+            pausePanelCanvasGroup.blocksRaycasts = false;
+            Debug.Log("Pause menu hidden.");
+        }
+        else
+        {
+            Debug.LogWarning("Pause panel CanvasGroup is null, cannot hide pause menu.");
         }
     }
 }
