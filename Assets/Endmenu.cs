@@ -23,7 +23,7 @@ public class Endmenu : MonoBehaviour
     }
     public void ReloadLevel()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex -2);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex -1);
 
 
     }

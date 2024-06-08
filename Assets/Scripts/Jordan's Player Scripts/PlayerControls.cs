@@ -27,6 +27,7 @@ public class PlayerControls : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        CameraManager.confirm = true;
 
     }
 
