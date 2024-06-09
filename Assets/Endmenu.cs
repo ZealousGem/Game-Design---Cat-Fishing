@@ -23,8 +23,9 @@ public class Endmenu : MonoBehaviour
     }
     public void ReloadLevel()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex -1);
-
+        SceneManager.LoadScene("Jordan Testing");
+        SeaBedCollision.confirm = false;
+        //   SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
 
     }
 }

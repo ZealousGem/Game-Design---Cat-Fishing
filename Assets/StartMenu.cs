@@ -7,7 +7,8 @@ public class StartMenu : MonoBehaviour
 {
     public void Startbutton()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        //   SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene("Jordan Testing");
 
     }
     public void QuitGame()

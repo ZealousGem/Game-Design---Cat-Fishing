@@ -19,6 +19,7 @@ public class Mainmenu : MonoBehaviour
     public void ReloadLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SeaBedCollision.confirm = false;
         Time.timeScale = 1f;
 
 

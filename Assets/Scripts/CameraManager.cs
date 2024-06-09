@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class CameraManager : MonoBehaviour
 {
@@ -10,20 +11,38 @@ public class CameraManager : MonoBehaviour
    public GameObject Maincam;
     public GameObject airwall;
     public static bool confirm;
+    public UnityEvent camerachange;
     void Start()
     {
         cam.SetActive(true);
         airwall.SetActive(false);
+        Debug.Log(confirm);
+       
     }
 
+
     // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
     {
-        if (confirm)
+        camerachange.Invoke();
+    }
+
+    public void OnBecameInvisible()
+    {
+        if (SeaBedCollision.confirm)
         {
             cam.SetActive(false);
             Maincam.SetActive(true);
             airwall.SetActive(true);
         }
+
+        else
+        {
+            cam.SetActive(true);
+            Maincam.SetActive(false);
+            airwall.SetActive(false);
+        }
     }
+
+
 }
