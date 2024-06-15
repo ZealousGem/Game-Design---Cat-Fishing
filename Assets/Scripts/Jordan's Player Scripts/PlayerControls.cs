@@ -58,13 +58,6 @@ public class PlayerControls : MonoBehaviour
 
            else { catMovement.SetBool("Moving", false); }
             
-        
-
-        
-            
-        
-
-
             if (Input.GetKeyDown(KeyCode.F)) // Default key for "Fire1" is left ctrl or mouse0
             {
                 StartCoroutine(LightAttack());
@@ -78,13 +71,6 @@ public class PlayerControls : MonoBehaviour
 
             }
         
-            
-            
-        
-       
-        
-       
-
     }
     private void FixedUpdate()
     {

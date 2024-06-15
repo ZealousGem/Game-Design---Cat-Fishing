@@ -5,10 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class Mainmenu : MonoBehaviour
 {
+    private PauseControl pauseControl;
     // Start is called before the first frame update
     void Start()
     {
-        
+        GameObject player = GameObject.FindWithTag("Player");
+        pauseControl = player.GetComponent<PauseControl>();
+
     }
 
     // Update is called once per frame
@@ -23,6 +26,16 @@ public class Mainmenu : MonoBehaviour
         Time.timeScale = 1f;
 
 
+    }
+    public void QuitGame()
+    {
+        Debug.Log("quits the game");
+        Application.Quit();
+    }
+    public void Continue()
+    {
+        pauseControl.BridgingMenuContinue();
+        
     }
 
 }

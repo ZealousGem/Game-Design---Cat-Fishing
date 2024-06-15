@@ -55,6 +55,13 @@ public class PauseControl : MonoBehaviour
 
 
     }
+    public void BridgingMenuContinue()
+    {
+        Time.timeScale = 1f;
+        TogglePausePanel();
+
+
+    }
    
     public void TogglePausePanel()
     {
