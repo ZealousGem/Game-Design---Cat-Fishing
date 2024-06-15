@@ -58,14 +58,15 @@ public class PlayerControls : MonoBehaviour
 
            else { catMovement.SetBool("Moving", false); }
             
-            if (Input.GetKeyDown(KeyCode.F)) // Default key for "Fire1" is left ctrl or mouse0
+            if (Input.GetMouseButtonDown(0)) // Default key for "Fire1" is left ctrl or mouse0
             {
                 StartCoroutine(LightAttack());
 
             }
+           
 
             // Handle heavy attack input
-            if (Input.GetKeyDown(KeyCode.Q)) // Default key for "Fire2" is left alt or mouse1
+            if (Input.GetMouseButtonDown(1)) // Default key for "Fire2" is left alt or mouse1
             {
                 StartCoroutine(HeavyAttack());
 
