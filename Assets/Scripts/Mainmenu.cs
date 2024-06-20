@@ -35,6 +35,8 @@ public class Mainmenu : MonoBehaviour
         AudioManager.instance.SFX("Button");
         SceneManager.LoadScene("Start");
         SeaBedCollision.confirm = false;
+        Time.timeScale = 1f;
+       
     }
     public void Continue()
     {

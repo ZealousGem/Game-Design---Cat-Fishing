@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class HealthPackSpawner : MonoBehaviour
 {
@@ -13,8 +14,20 @@ public class HealthPackSpawner : MonoBehaviour
     {
         if (col.gameObject.tag == "Health")
         {
-            StartCoroutine(HealingTime());
+            if (gameObject.tag == "Trophy")
+            {
+                SceneManager.LoadScene("WinningScreen");
+                AudioManager.instance.musicSource.Stop();
+            }
+
+            else
+            {
+                StartCoroutine(HealingTime());
+            }
+            
         }
+
+        
     }
 
     public IEnumerator HealingTime()
