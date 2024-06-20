@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 059b12734d042f54c8a070708fca5aa5
+guid: 4f1ef2e60bb3ddb4e9c6f356ec253d10
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -95,70 +95,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: CatIdleSprite_0
-      rect:
-        serializedVersion: 2
-        x: 120
-        y: 640
-        width: 380
-        height: 480
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a00b55a4638639b4cae433fb19b3be1d
-      internalID: -1593158279
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: CatIdleSprite_1
-      rect:
-        serializedVersion: 2
-        x: 760
-        y: 644
-        width: 376
-        height: 476
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7a452b16d30eb0f47a940fa9f998432f
-      internalID: -1388558454
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: CatIdleSprite_2
-      rect:
-        serializedVersion: 2
-        x: 120
-        y: 7
-        width: 375
-        height: 473
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fd443fdee48a6394c80ef50570a0cf99
-      internalID: -1464052234
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
@@ -169,10 +106,7 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      CatIdleSprite_0: -1593158279
-      CatIdleSprite_1: -1388558454
-      CatIdleSprite_2: -1464052234
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

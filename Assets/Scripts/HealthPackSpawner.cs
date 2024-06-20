@@ -21,6 +21,7 @@ public class HealthPackSpawner : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         cat.Heal(health);
+        AudioManager.instance.SFX("Health");
         Debug.Log("healed");
         Destroy(enemy);
       

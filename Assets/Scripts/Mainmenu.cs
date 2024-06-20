@@ -22,20 +22,25 @@ public class Mainmenu : MonoBehaviour
     public void ReloadLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        AudioManager.instance.SFX("Button");
         SeaBedCollision.confirm = false;
         Time.timeScale = 1f;
+        AudioManager.instance.musicSource.UnPause();
 
 
     }
     public void QuitGame()
     {
         Debug.Log("quits the game");
-        Application.Quit();
+        AudioManager.instance.SFX("Button");
+        SceneManager.LoadScene("Start");
+        SeaBedCollision.confirm = false;
     }
     public void Continue()
     {
         pauseControl.BridgingMenuContinue();
-        
+        AudioManager.instance.SFX("Button");
+        AudioManager.instance.musicSource.UnPause();
     }
 
 }

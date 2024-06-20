@@ -12,8 +12,13 @@ public class SeaBedCollision : MonoBehaviour
         {
             CameraManager.confirm = true;
             confirm = true;
+           // AudioManager.instance.SFX("");
             Debug.Log(CameraManager.confirm);
-            
+            AudioManager.instance.SFX("Splash");
+            AudioManager.instance.musicSource.Stop();
+            AudioManager.PlayMusic("Ocean");
+            AudioManager.instance.musicSource.Play();
+
         }
     }
 }

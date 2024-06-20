@@ -10,13 +10,17 @@ public class CameraManager : MonoBehaviour
     public GameObject cam;
    public GameObject Maincam;
     public GameObject airwall;
+    public GameObject airwall2;
     public static bool confirm;
     public UnityEvent camerachange;
     void Start()
     {
         cam.SetActive(true);
         airwall.SetActive(false);
+        airwall2.SetActive(true);
         Debug.Log(confirm);
+        AudioManager.PlayMusic("Waves");
+        AudioManager.instance.musicSource.Play();
        
     }
 
@@ -34,6 +38,7 @@ public class CameraManager : MonoBehaviour
             cam.SetActive(false);
             Maincam.SetActive(true);
             airwall.SetActive(true);
+            airwall2.SetActive(false);
         }
 
         else
@@ -41,6 +46,7 @@ public class CameraManager : MonoBehaviour
             cam.SetActive(true);
             Maincam.SetActive(false);
             airwall.SetActive(false);
+            airwall2.SetActive(true);
         }
     }
 

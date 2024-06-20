@@ -9,11 +9,13 @@ public class StartMenu : MonoBehaviour
     {
         //   SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         SceneManager.LoadScene("Jordan Testing");
+        AudioManager.instance.SFX("Button");
 
     }
     public void QuitGame()
     {
         Debug.Log("Quitting game");
+        AudioManager.instance.SFX("Button");
         Application.Quit();
     }
     // Start is called before the first frame update

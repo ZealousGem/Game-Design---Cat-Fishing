@@ -36,6 +36,7 @@ public class PauseControl : MonoBehaviour
             {
                 Time.timeScale = 1f;
                 TogglePausePanel();
+               
                 //tells the gamemanager to resume the game
 
 
@@ -80,6 +81,7 @@ public class PauseControl : MonoBehaviour
         if (pausePanelCanvasGroup.alpha == 0f)
         {
             ShowPauseMenu();
+            AudioManager.instance.musicSource.Pause();
         }
         else
         {
@@ -113,6 +115,7 @@ public class PauseControl : MonoBehaviour
             //you can not interact with it 
             pausePanelCanvasGroup.interactable = false;
             pausePanelCanvasGroup.blocksRaycasts = false;
+            AudioManager.instance.musicSource.UnPause();
             Debug.Log("Pause menu hidden.");
         }
         else

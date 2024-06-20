@@ -60,7 +60,7 @@ public class Health : MonoBehaviour
             //if the players health is 0 they are destoyed and the game manager is notified
             currentHealth = 0;
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-
+            AudioManager.instance.musicSource.Stop();
             healthImage.fillAmount = 0;
             // Destroy(gameObject);
 

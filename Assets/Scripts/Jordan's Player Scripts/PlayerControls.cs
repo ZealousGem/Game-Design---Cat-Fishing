@@ -103,6 +103,7 @@ public class PlayerControls : MonoBehaviour
         isAttacking = true;
         lightAttackHitbox.SetActive(true);
         catMovement.SetTrigger("Light");
+        AudioManager.instance.SFX("Light");
         //animator.SetTrigger("LightAttack");
         yield return new WaitForSeconds(0.5f); // Match duration to animation
         lightAttackHitbox.SetActive(false);
@@ -114,6 +115,7 @@ public class PlayerControls : MonoBehaviour
         isAttacking = true;
         heavyAttackHitbox.SetActive(true);
         catMovement.SetTrigger("Heavy");
+        AudioManager.instance.SFX("Heavy");
         //animator.SetTrigger("HeavyAttack");
         yield return new WaitForSeconds(1f); // Match duration to animation
         heavyAttackHitbox.SetActive(false);
